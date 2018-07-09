@@ -21,7 +21,6 @@
     "jimp": "^0.2.28",
     "request": "^2.85.0",
     "dateformat": "^3.0.3",
-// music
     "ytdl-core": "^0.20.4",
     "get-youtube": "^3.1.0",
     "youtube-info": "^1.2.0",
