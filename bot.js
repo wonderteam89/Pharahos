@@ -205,48 +205,82 @@ client.on('message' , message => {
     });
 
 client.on('message', message => {
-if (message.content.startsWith(prefix + 'شرح')) {
+if(message.content === prefix + 'info' || message.content === prefix + 'شرح') {
     let pages = ['https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468','https://media.discordapp.net/attachments/446719436385419265/465905470842994691/info.png','https://media.discordapp.net/attachments/446719436385419265/465905475985342475/News.png','https://media.discordapp.net/attachments/446719436385419265/465905472440893441/Ruels.png','https://media.discordapp.net/attachments/446719436385419265/465905474747891743/Chat.png','https://media.discordapp.net/attachments/446719436385419265/465907892739112960/Photo.png','https://media.discordapp.net/attachments/446719436385419265/465905487758491659/bot.png','https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468']
-    let page = 1;
-
-    let embed = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setFooter(`Page ${page} of ${pages.length}`)
-    .setImage(pages[page-1])
-
-    message.channel.sendEmbed(embed).then(msg => {
-
-        msg.react('◀').then( r => {
-            msg.react('▶')
-
-
-        const backwardsFilter = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
-        const forwardsFilter = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
-
-
-        const backwards = msg.createReactionCollector(backwardsFilter, { time: 20000});
-        const forwards = msg.createReactionCollector(forwardsFilter, { time: 20000});
-
-
-
-        backwards.on('collect', r => {
-            if (page === 1) return;
-            page--;
-            embed.setDescription(pages[page-1]);
-            embed.setFooter(`Page ${page} of ${pages.length}`);
-            msg.edit(embed)
-        })
-        forwards.on('collect', r => {
-            if (page === pages.length) return;
-            page++;
-            embed.setDescription(pages[page-1]);
-            embed.setFooter(`Page ${page} of ${pages.length}`);
-            msg.edit(embed)
-        })
-        })
-    })
-    }
+	let page = 1;
+	
+	message.delete();
+	
+	let embed = new Discord.RichEmbed()
+	.setColor('#264d00')
+	.setFooter(`شرح | صفحة رقم ${page} من اصل ${pages.length} صفحة`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468')
+	.setImage(pages[page-1])
+	
+// ${page}
+// ${pages.length}
+	message.channel.sendEmbed(embed).then(msg => {
+		
+		msg.react('⏮').then( r => {
+			msg.react('⬅')
+		.then(() => msg.react('⏹'))
+		.then(() => msg.react('➡'))
+		.then(() => msg.react('⏭'))
+			
+			let backwardsFilter = (reaction, user) => reaction.emoji.name === '⬅' && user.id === message.author.id;
+			let forwardsFilter = (reaction, user) => reaction.emoji.name === '➡' && user.id === message.author.id;
+			
+			let sbackwardsFilter = (reaction, user) => reaction.emoji.name === '⏮' && user.id === message.author.id;
+			let sforwardsFilter = (reaction, user) => reaction.emoji.name === '⏭' && user.id === message.author.id;
+			
+			let cancelFilter = (reaction, user) => reaction.emoji.name === '⏹' && user.id === message.author.id;
+			
+			let backwards = msg.createReactionCollector(backwardsFilter, { time: 0 });
+			let forwards = msg.createReactionCollector(forwardsFilter, { time: 0 });
+			
+			let sbackwards = msg.createReactionCollector(sbackwardsFilter, { time: 0 });
+			let sforwards = msg.createReactionCollector(sforwardsFilter, { time: 0 });
+			
+			let cancel = msg.createReactionCollector(cancelFilter, { time: 0 });
+			
+			backwards.on('collect', r => {
+				if (page === 1) return;
+				page--;
+				embed.setImage(pages[page-1]);
+				embed.setFooter(`شرح | صفحة رقم ${page} من اصل ${pages.length} صفحة`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468');
+				msg.edit(embed)
+			})
+			forwards.on('collect', r => {
+				if (page === pages.length) return;
+				page++;
+				embed.setImage(pages[page-1]);
+				embed.setFooter(`شرح | صفحة رقم ${page} من اصل ${pages.length} صفحة`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468');
+				msg.edit(embed)
+			})
+			sbackwards.on('collect', r => {
+				if (page === 1) return;
+				page = 1;
+				embed.setImage(pages[page-1]);
+				embed.setFooter(`شرح | صفحة رقم ${page} من اصل ${pages.length} صفحة`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468');
+				msg.edit(embed)
+			})
+			sforwards.on('collect', r => {
+				if (page === pages.length) return;
+				page = 8; 
+				embed.setImage(pages[page-1]);
+				embed.setFooter(`شرح | صفحة رقم ${page} من اصل ${pages.length} صفحة`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468');
+				msg.edit(embed)
+			})
+			cancel.on('collect', r => {
+				embed.setDescription(`**سوف يتم إغلاق القائمة**`);
+				embed.setImage('');
+				embed.setFooter(`Menu will close after 3sec`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468');
+				msg.edit(embed).then(msg.delete(3000));
+			})
+		})
+	})
+}
 });
+
 
 var dat = JSON.parse("{}");
 function forEachObject(obj, func) {
