@@ -370,7 +370,7 @@ var mentionned = message.mentions.members.first();
 
   
 client.on('message', message => {
-    var prefix = "$";
+    var prefix = "-";
     
         if (message.author.id === client.user.id) return;
         if (message.guild) {
@@ -378,7 +378,7 @@ client.on('message', message => {
         let args = message.content.split(' ').slice(1).join(' ');
     if(message.content.split(' ')[0] == prefix + 'bc') {
         if (!args[1]) {
-    message.channel.send("**$bc <message>**");
+    message.channel.send("**-bc <message>**");
     return;
     }
             message.guild.members.forEach(m => {
