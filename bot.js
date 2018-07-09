@@ -142,34 +142,8 @@ client.on('message', message => {
 
 
 
-const iiTz =
-[
-'**__W__elcome To Pharahos™**',
-'**W__e__lcome To Pharahos™**',
-'**We__l__come To Pharahos™**',
-'**Wel__c__ome To Pharahos™**',
-'**Welc__o__me To Pharahos™**',
-'**Welco__m__e To Pharahos™**',
-'**Welcom__e__ To Pharahos™**',
-'**Welcome __T__o Pharahos™**',
-'**Welcome T__o__ Pharahos™**',
-'**Welcome To __P__harahos™**',
-'**Welcome To P__h__arahos™**',
-'**Welcome To Ph__a__rahos™**',
-'**Welcome To Pha__r__ahos**',
-'**Welcome To Phar__a__hos**'
-'**Welcome To Phara__h__os**'
-'**Welcome To Pharah__o__s**'
-'**Welcome To Pharaho__s__**'
-]
-client.on('guildMemberAdd', member => {
-const Kahrba = member.guild.channels.get("465929363699793921");//ايدي الشات
-if(!Kahrba) return;
-if(Kahrba) {
-Kahrba.send(  `${iiTz[Math.floor(Math.random() * iiTz.length)]}`);          
-}
-});
-  
+
+
 
 client.on('message', message => {
     let args = message.content.split(' ').slice(1);
