@@ -255,7 +255,6 @@ client.on('message' , message => {
         }
     });
 
-var prefix = '-';
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'شرح')) {
     let pages = ['https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468','https://media.discordapp.net/attachments/446719436385419265/465905470842994691/info.png','https://media.discordapp.net/attachments/446719436385419265/465905475985342475/News.png','https://media.discordapp.net/attachments/446719436385419265/465905472440893441/Ruels.png','https://media.discordapp.net/attachments/446719436385419265/465905474747891743/Chat.png','https://media.discordapp.net/attachments/446719436385419265/465907892739112960/Photo.png','https://media.discordapp.net/attachments/446719436385419265/465905487758491659/bot.png','https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468']
