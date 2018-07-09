@@ -40,7 +40,7 @@ if(message.content === adminprefix + "restart") {
           message.channel.send(`⚠️ **الشخص الذي اعاد تشغيل البوت ${message.author.username}**`);
         console.log(`⚠️ جاري اعادة تشغيل البوت... ⚠️`);
         client.destroy();
-        child_process.fork(__dirname + "/الملف.js");
+        child_process.fork(__dirname + "/bot.js");
         console.log(`تم اعادة تشغيل البوت`);
     }
   
@@ -48,7 +48,7 @@ if(message.content === adminprefix + "restart") {
 
 
 client.on("guildMemberAdd", member => {
-let welcomer = member.guild.channels.find("name", "welcome");
+let welcomer = member.guild.channels.find("name","اسم روم الترحيب");
       if(!welcomer) return;
       if(welcomer) {
          moment.locale('ar-ly');
@@ -57,13 +57,14 @@ let welcomer = member.guild.channels.find("name", "welcome");
         .setColor('RANDOM')
         .setThumbnail(h.avatarURL)
         .setAuthor(h.username,h.avatarURL)
-	    .addField("**عدد الايام منذ افتتاح حسابك:**", message.author.createdAt.getDate())
+        .addField(': تاريخ دخولك الدسكورد',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)            
+         .addField(': تاريخ دخولك السيرفر',`${moment(member.joinedAt).format('D/M/YYYY h:mm a ')} \n\`\`${moment(member.joinedAt).startOf(' ').fromNow()}\`\``, true)      
+         .setFooter(`${h.tag}`,"https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif")
      welcomer.send({embed:norelden});          
                
  
       }
-  });
-
+      });
 
   client.on('message', message => {
     if (!message.guild) return; 
