@@ -232,7 +232,7 @@ client.on('message' , message => {
      var codes = args.join(' ')
        
         if(!codes) {
-          message.channel.send("قم بكتابة الرسالة | !rolebc @everyone message")
+          message.channel.send("قم بكتابة الرسالة | !rolebc ``@Role`` message")
             return;
         }
      
