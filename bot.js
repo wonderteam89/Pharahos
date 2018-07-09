@@ -141,8 +141,8 @@ client.on('message', message => {
 });
 
 
-Pharahos™
-  const iiTz =
+
+const iiTz =
 [
 '**__W__elcome To Pharahos™**',
 '**W__e__lcome To Pharahos™**',
