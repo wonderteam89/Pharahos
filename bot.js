@@ -48,7 +48,7 @@ if(message.content === adminprefix + "restart") {
 
 
 client.on("guildMemberAdd", member => {
-let welcomer = member.guild.channels.find("name","اسم روم الترحيب");
+let welcomer = member.guild.channels.find("name","welcome");
       if(!welcomer) return;
       if(welcomer) {
          moment.locale('ar-ly');
