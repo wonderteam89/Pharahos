@@ -110,7 +110,7 @@ var jimp = require('jimp');// npm i jimp
                               ctx.arc(115, 100, 90, 0, Math.PI*2);
                                  ctx.closePath();
                                  ctx.clip();
-                                 ctx.drawImage(ava, 5, 5, 240, 240);
+                                 ctx.drawImage(ava, 5, 5, 200, 240);
 
                                                       //wl
                               ctx.font = '20px Arial Bold';
