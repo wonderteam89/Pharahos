@@ -76,16 +76,10 @@ var jimp = require('jimp');// npm i jimp
       var Canvas = require('canvas')
       var jimp = require('jimp')
 
-      const w = ['./w1.png',
-      './w2.png',
-      './w3.png',
-      './w4.png',
-      './w5.png',
-      './w7.png',
-      './w8.png'];
+      const w = ['./welcome33.png'];
 
               let Image = Canvas.Image,
-                  canvas = new Canvas(401, 202),
+                  canvas = new Canvas(687, 258),
                   ctx = canvas.getContext('2d');
               ctx.patternQuality = 'bilinear';
               ctx.filter = 'bilinear';
