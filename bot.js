@@ -79,7 +79,7 @@ var jimp = require('jimp');// npm i jimp
       const w = ['./welcome33.png'];
 
               let Image = Canvas.Image,
-                  canvas = new Canvas(258, 687),
+                  canvas = new Canvas(687, 258),
                   ctx = canvas.getContext('2d');
               ctx.patternQuality = 'bilinear';
               ctx.filter = 'bilinear';
@@ -92,7 +92,7 @@ var jimp = require('jimp');// npm i jimp
                   let BG = Canvas.Image;
                   let ground = new Image;
                   ground.src = Background;
-                  ctx.drawImage(ground, 0, 0, 401, 202);
+                  ctx.drawImage(ground, 0, 0, 687, 258);
 
       })
 
