@@ -107,10 +107,10 @@ var jimp = require('jimp');// npm i jimp
                               let ava = new Avatar;
                               ava.src = buf;
                               ctx.beginPath();
-                              ctx.arc(115, 100, 90, 0, Math.PI*2);
+                              ctx.arc(150, 100, 90, 0, Math.PI*2);
                                  ctx.closePath();
                                  ctx.clip();
-                                 ctx.drawImage(ava, 5, 5, 200, 240);
+                                 ctx.drawImage(ava, 5, 5, 200, 200);
 
                                                       //wl
                               ctx.font = '20px Arial Bold';
