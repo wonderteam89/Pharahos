@@ -101,7 +101,6 @@ var jimp = require('jimp');// npm i jimp
                           if (err) return console.log(err);
                           ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
                               if (err) return console.log(err);
-
                               
                         //Avatar
                         let Avatar = Canvas.Image;
@@ -115,18 +114,11 @@ var jimp = require('jimp');// npm i jimp
 
                                                       //wl
                               ctx.font = '20px Arial Bold';
-                              ctx.fontSize = '15px';
+                              ctx.fontSize = '30px';
                               ctx.fillStyle = "#FFFFFF";
                               ctx.textAlign = "center";
-                                                         ctx.fillText(member.user.username, 200, 154);
+                              cctx.fillText(member.user.username, 420, 100);
 
-                              //NAME
-                              ctx.font = '20px Arial';
-                              ctx.fontSize = '28px';
-                              ctx.fillStyle = "#FFFFFF";
-                              ctx.textAlign = "center";
-                                    ctx.fillText(`You Are Number ${member.guild.memberCount} `
-                              , 200, 190);
 
  welcomer.sendFile(canvas.toBuffer())
 
