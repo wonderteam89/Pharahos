@@ -110,14 +110,14 @@ var jimp = require('jimp');// npm i jimp
                               ctx.arc(115, 100, 90, 0, Math.PI*2);
                                  ctx.closePath();
                                  ctx.clip();
-                                 ctx.drawImage(ava, 5, 5, 200, 200);
+                                 ctx.drawImage(ava, 5, 5, 240, 240);
 
                                                       //wl
                               ctx.font = '20px Arial Bold';
                               ctx.fontSize = '30px';
                               ctx.fillStyle = "#FFFFFF";
                               ctx.textAlign = "center";
-                              cctx.fillText(member.user.username, 420, 100);
+                                                         ctx.fillText(member.user.username, 200, 154);
 
 
  welcomer.sendFile(canvas.toBuffer())
