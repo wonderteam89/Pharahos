@@ -396,7 +396,7 @@ if (!rank) return message.reply('انت لا تمتلك الرتبه المخص�
             }
           })
   
-f
+
 
 
 client.login(process.env.TOKEN);
