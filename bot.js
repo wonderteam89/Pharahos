@@ -390,7 +390,7 @@ if (!rank) return message.reply('انت لا تمتلك الرتبه المخص�
             text = co.first().content
 
               message.channel.send(`تم حفظ اقتراحك الرجاء انتضار الرد من قبل الاداره`)
-                client.channels.get("اي دي روم الي تبيه").send(`${message.author.username}'s sug => ${text}`)
+                client.channels.get("466643025481695233").send(`${message.author.username}'s sug => ${text}`)
 
               })
             }
