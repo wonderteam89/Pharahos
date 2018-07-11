@@ -76,7 +76,7 @@ var jimp = require('jimp');// npm i jimp
       var Canvas = require('canvas')
       var jimp = require('jimp')
 
-      const w = ['./welcome33.png'];
+      const w = ['./wlc.png'];
 
               let Image = Canvas.Image,
                   canvas = new Canvas(687, 258),
