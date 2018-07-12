@@ -331,7 +331,6 @@ client.on('message', message => {
                 .addField('» السيرفر :', `${message.guild.name}`)
                 .addField('» المرسل : ', `${message.author.username}#${message.author.discriminator}`)
                 .addField(' » الرسالة : ', args)
-                .setImage('https://media.discordapp.net/attachments/420910784558923787/464235980094701578/331414.png')
                 .setColor('RANDOM')
                 // m.send(`[${m}]`);
                 m.send(`${m}`,{embed: bc});
