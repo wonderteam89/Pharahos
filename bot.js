@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const child_process = require("child_process");
 const moment = require('moment');
 const request = require('request');
+const dateFormat = require('dateformat');
 const fs = require('fs');
 const client = new Discord.Client();
 const adminprefix = "k!";
@@ -379,6 +380,34 @@ if (!rank) return message.reply('انت لا تمتلك الرتبه المخص�
 });
 //
 
+
+var jimp = require('jimp')
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.on('guildMemberAdd', member => {
+
+    const channel = member.guild.channels.find('name', 'chat');
+  
+    const millis = new Date().getTime() - member.user.createdAt.getTime();
+    const now = new Date();
+    const createdAt = millis / 1000 / 60 / 60 / 24;
+
+
+
+
+  
+    const embed = new Discord.RichEmbed()
+    
+    .setColor("#1f0707")
+    .setDescription(`**تاريخ دخولك للدسكورد منذ ${createdAt.toFixed(0)} يوم**`)
+    .setAuthor(member.user.tag, member.user.avatarURL);
+    channel.sendEmbed(embed);
+
+  
+});
 
 
 
