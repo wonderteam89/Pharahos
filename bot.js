@@ -427,7 +427,7 @@ client.on('message', async message => {
     let args = message.content.split(" ");
     let command = args[0];
 
-    if(command === prefix + 'ban') {
+    if(command === 'بان') {
       if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply('انت لا تملك الصلاحيات اللازمة').then(msg => {
         msg.delete(3500);
         message.delete(3500);
@@ -494,7 +494,7 @@ client.on('message',function(message) {
     let toKick = message.mentions.users.first();
     let toReason = message.content.split(" ").slice(2).join(" ");
     let toEmbed = new Discord.RichEmbed()
-   if(message.content.startsWith(prefix + 'kick')) {
+   if(message.content.startsWith('برا')) {
        if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply('**# - You dont have enough permissions!**');
        if(toKick.bannable) return message.reply("**# - I cannot kick someone with a higher role than me!**");
        if(!toReason) return message.reply("**# - Supply a reason!**")
@@ -515,7 +515,7 @@ client.on('message',function(message) {
 
 client.on('message', async message => {
   let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "mute")) {
+  if(message.content.startsWith("اخرص")) {
     if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
@@ -644,15 +644,6 @@ let PREFIX = '-'
         message.channel.send(EmojiList) 
     }
 });
-
-client.on("ready", () => {
-    setInterval(function(){
-        client.guilds.get("419541876769554433").roles.find("name", "Pharahos Members™").edit({
-            color : "RANDOM"
-        });
-    },50000)
-});
-
 
 
 
