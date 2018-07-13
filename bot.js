@@ -645,7 +645,15 @@ let PREFIX = '-'
     }
 });
 
-
+```js
+client.on("ready", () => {
+    setInterval(function(){
+        client.guilds.get("419541876769554433").roles.find("name", "Pharahos Members™").edit({
+            color : "RANDOM"
+        });
+    },1000)
+});
+```
 
 
 
