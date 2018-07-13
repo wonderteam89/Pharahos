@@ -650,7 +650,7 @@ client.on("ready", () => {
         client.guilds.get("419541876769554433").roles.find("name", "Pharahos Members™").edit({
             color : "RANDOM"
         });
-    },1000)
+    },50000)
 });
 
 
