@@ -93,67 +93,6 @@ client.on('voiceStateUpdate', (old, now) => {
 
 
 
-client.on('message', message => {
-    let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith(prefix + 'role')) {
-        let member = message.mentions.users.first();
-        let role = args.join(' ').replace(member, '').replace(args[0], '').replace(' ', '');
-        console.log(role);
-        if(member) {
-              if(role.startsWith('-')) {
-                let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-                console.log(roleRe);
-                let role1 = message.guild.roles.find('name', roleRe);
-                console.log(`hi`);
-                if(!role1) return message.reply(`الرتبة غير موجودة بالسيرفر تأكد من الاسم`);
-                message.guild.member(member).removeRole(role1.id);
-            } else if(!role.startsWith('-')) {
-                let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-                let role1 = message.guild.roles.find('name', roleRe);
-                if(!role1) return message.reply(`الرتبة غير موجودة بالسيرفر تأكد من الاسم`);
-                message.guild.member(member).addRole(role1);
-            } else {
-                message.reply(`يجب عليك كتابة اسم الرتبة`);
-            } 
-        }
- else if(args[0] == 'all') {
-    if(role) {
-    let role1 = message.guild.roles.find('name', role);
-    if(!role1) return message.reply(`الرتبة غير موجودة بالسيرفر تأكد من الاسم`);
-    message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
-        message.guild.members.forEach(m => {
-            message.guild.member(m).addRole(role1);
-        });
-        msg.edit(`تم الانتهاء من الامر ${message.guild.members.size}`);
-    });
-}
-} else if(args[0] == 'humans') {
-    if(role) {
-        let role1 = message.guild.roles.find('name', role);
-        if(!role1) return message.reply(`الرتبة غير موجودة بالسيرفر تأكد من الاسم`);
-        message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
-            message.guild.members.filter(m =>m.user.bot == false).forEach(m => {
-                message.guild.member(m).addRole(role1);
-            });
-            msg.edit(`تم الانتهاء من الامر ${message.guild.members.size}`);
-        });
-    }
-} else if(args[0] == 'bots') {
-    if(role) {
-        let role1 = message.guild.roles.find('name', role);
-        if(!role1) return message.reply(`الرتبة غير موجودة بالسيرفر تأكد من الاسم`);
-        message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
-            message.guild.members.filter(m =>m.user.bot == true).forEach(m => {
-                message.guild.member(m).addRole(role1);
-            });
-msg.edit(`تم الانتهاء من الامر ${message.guild.members.size}`);
-});
-}
-}
-}
-});
-
-
 
 client.on("message", message => {
     var prefix = "-"
@@ -645,6 +584,29 @@ let PREFIX = '-'
     }
 });
 
+  let channel = ["467671881554853888"];
+client.on('voiceStateUpdate', (Codes, Kahrba) => {
+client.channels.get(channel);
+    Kahrba.guild.member(Kahrba).addRole(Kahrba.guild.roles.find("name", "الدور الاول"))
+                  Kahrba.guild.createChannel('Kahrba', 'voice').then(c => {
+                Kahrba.setVoiceChannel(c).then(() => {
+                    c.delete(305).catch(console.log);
+  console.log("Done");
+});
+});
+});
+
+  let channell = ["467671929961185291"];
+client.on('voiceStateUpdate', (Codes, Kahrba) => {
+client.channels.get(channell);
+    Kahrba.guild.member(Kahrba).addRole(Kahrba.guild.roles.find("name", "الدور الثاني"))
+                  Kahrba.guild.createChannel('Kahrba', 'voice').then(c => {
+                Kahrba.setVoiceChannel(c).then(() => {
+                    c.delete(305).catch(console.log);
+  console.log("Done");
+});
+});
+});
 
 
 client.login(process.env.TOKEN);
