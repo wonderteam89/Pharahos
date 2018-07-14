@@ -584,17 +584,5 @@ let PREFIX = '-'
     }
 });
 
-  let channel = ["467674410195746816"];
-client.on('voiceStateUpdate', (Codes, Kahrba) => {
-client.channels.get(channel);
-    Kahrba.guild.member(Kahrba).addRole(Kahrba.guild.roles.find("name", "verified"))
-                  Kahrba.guild.createChannel('Kahrba', 'voice').then(c => {
-                Kahrba.setVoiceChannel(c).then(() => {
-                    c.delete(305).catch(console.log);
-  console.log("Done");
-});
-});
-});
-
 
 client.login(process.env.TOKEN);
