@@ -584,22 +584,10 @@ let PREFIX = '-'
     }
 });
 
-  let channel = ["467671881554853888"];
+  let channel = ["467674410195746816"];
 client.on('voiceStateUpdate', (Codes, Kahrba) => {
 client.channels.get(channel);
-    Kahrba.guild.member(Kahrba).addRole(Kahrba.guild.roles.find("name", "الدور الاول"))
-                  Kahrba.guild.createChannel('Kahrba', 'voice').then(c => {
-                Kahrba.setVoiceChannel(c).then(() => {
-                    c.delete(305).catch(console.log);
-  console.log("Done");
-});
-});
-});
-
-  let channell = ["467671929961185291"];
-client.on('voiceStateUpdate', (Codes, Kahrba) => {
-client.channels.get(channell);
-    Kahrba.guild.member(Kahrba).addRole(Kahrba.guild.roles.find("name", "الدور الثاني"))
+    Kahrba.guild.member(Kahrba).addRole(Kahrba.guild.roles.find("name", "verified"))
                   Kahrba.guild.createChannel('Kahrba', 'voice').then(c => {
                 Kahrba.setVoiceChannel(c).then(() => {
                     c.delete(305).catch(console.log);
