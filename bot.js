@@ -600,31 +600,6 @@ room.sendEmbed(embed);
 
 
 
-//
-client.on("ready", async  => {
-setInterval(function(){
-client.channels.find('id', '468837037823229953').setName("W");
-client.channels.find('id', '468837037823229953').setName("We");
-client.channels.find('id', '468837037823229953').setName("Wel");
-client.channels.find('id', '468837037823229953').setName("Welc");
-client.channels.find('id', '468837037823229953').setName("Welco");
-client.channels.find('id', '468837037823229953').setName("Welcom");
-client.channels.find('id', '468837037823229953').setName("Welcome");
-client.channels.find('id', '468837037823229953').setName("Welcome T");
-client.channels.find('id', '468837037823229953').setName("Welcome To");
-client.channels.find('id', '468837037823229953').setName("Welcome To P");
-client.channels.find('id', '468837037823229953').setName("Welcome To Ph");
-client.channels.find('id', '468837037823229953').setName("Welcome To Pha");
-client.channels.find('id', '468837037823229953').setName("Welcome To Phar");
-client.channels.find('id', '468837037823229953').setName("Welcome To Phara");
-client.channels.find('id', '468837037823229953').setName("Welcome To Pharah");
-client.channels.find('id', '468837037823229953').setName("Welcome To Pharaho");
-client.channels.find('id', '468837037823229953').setName("Welcome To Pharahos");
-client.channels.find('id', '468837037823229953').setName("Welcome To Pharahos™");
-  }, 40000);
-});
-
-
 
 
 
