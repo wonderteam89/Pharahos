@@ -583,6 +583,23 @@ let PREFIX = '-'
         message.channel.send(EmojiList) 
     }
 });
+
+client.on('message' , async rebel => {
+    if(rebel.author.bot) return;
+    var ReBeL = client.guilds.get("419541876769554433");
+    let room = ReBeL.channels.get('465850889455009803');
+if(rebel.channel.type == 'dm') return;
+const embed = new Discord.RichEmbed() 
+      .setColor("RANDOM")
+      		.setFooter(` العدد : ${ReBeL.members.filter(member => member.voiceChannel).size}`)
+      .setDescription(`\n${ReBeL.members.filter(member => member.voiceChannel).map(m => m.user.tag).join('\n')}`);
+setInterval(() => {
+room.sendEmbed(embed);
+}, 30*60000);// لو تبي تغير الوقت اللي تنرسل فيه الرساله غير رقم 30 الى عدد الدقائق اللي تبيهه ..
+});
+
+
+
 //
 client.on("ready", async  => {
 setInterval(function(){
@@ -604,7 +621,7 @@ client.channels.find('id', '468837037823229953').setName("Welcome To Pharah");
 client.channels.find('id', '468837037823229953').setName("Welcome To Pharaho");
 client.channels.find('id', '468837037823229953').setName("Welcome To Pharahos");
 client.channels.find('id', '468837037823229953').setName("Welcome To Pharahos™");
-  }, 3000);
+  }, 40000);
 });
 
 
