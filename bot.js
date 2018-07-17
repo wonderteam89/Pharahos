@@ -584,20 +584,6 @@ let PREFIX = '-'
     }
 });
 
-client.on('message' , async rebel => {
-    if(rebel.author.bot) return;
-    var ReBeL = client.guilds.get("419541876769554433");
-    let room = ReBeL.channels.get('465850889455009803');
-if(rebel.channel.type == 'dm') return;
-const embed = new Discord.RichEmbed() 
-      .setColor("RANDOM")
-      		.setFooter(` العدد : ${ReBeL.members.filter(member => member.voiceChannel).size}`)
-      .setDescription(`\n${ReBeL.members.filter(member => member.voiceChannel).map(m => m.user.tag).join('\n')}`);
-setInterval(() => {
-room.sendEmbed(embed);
-}, 30*60000);// لو تبي تغير الوقت اللي تنرسل فيه الرساله غير رقم 30 الى عدد الدقائق اللي تبيهه ..
-});
-
 
 
 
