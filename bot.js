@@ -18,7 +18,6 @@ const moment = require('moment');
 const request = require('request');
 const dateFormat = require('dateformat');
 const fs = require('fs');
-const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
 const client = new Discord.Client();
 const adminprefix = "k!";
