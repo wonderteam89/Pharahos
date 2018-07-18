@@ -24,7 +24,6 @@ const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
-const client = new Discord.Client();
 const adminprefix = "k!";
 const devs = ['286088294234718209'];
 const prefix = '-'
