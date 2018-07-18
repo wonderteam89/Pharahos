@@ -12,7 +12,7 @@
 // #                                                                      #
 // ########################################################################
 
-const { Client, Util } = require('discord.js');
+const Discord = require('discord.js');
 const child_process = require("child_process");
 const moment = require('moment');
 const request = require('request');
