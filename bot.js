@@ -51,6 +51,17 @@ message.channel.stopTyping()
 }
 });
 
+client.on('message', msg => {
+    if (msg.content == '!ادخل الروم يابن الوسخه') {
+        if (msg.member.voiceChannel) {
+
+     if (msg.member.voiceChannel.joinable) {
+         msg.member.voiceChannel.join();
+     }
+    }
+}
+})
+
 
 client.on('message', message => {
 if(message.content === adminprefix + "restart") {
@@ -584,18 +595,5 @@ let PREFIX = '-'
         message.channel.send(EmojiList) 
     }
 });
-
-client.on('message', msg => {
-let role = message.guilds.roles.find('name', '.');
-if(!message.guild.member(message.author).roles.has(role)) return message.reply('انت لا تملك الرتبة المطلوبة');
-    if (msg.content == '!ادخل') {
-        if (msg.member.voiceChannel) {
-
-     if (msg.member.voiceChannel.joinable) {
-         msg.member.voiceChannel.join();
-     }
-    }
-}
-})
 
 client.login(process.env.TOKEN);
