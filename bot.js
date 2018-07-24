@@ -649,7 +649,7 @@ client.on("guildMemberAdd", member => {
                               ctx.arc(115, 100, 90, 0, Math.PI*2);
                                  ctx.closePath();
                                  ctx.clip();
-                                 ctx.drawImage(ava, 5, 5, 221, 161);
+                                 ctx.drawImage(ava, 5, 5, 200, 200);
                               // (img,sx,sy,swidth,sheight,x,y,width,height);
                                                       //wl
                               ctx.font = '20px Arial Bold';
@@ -669,6 +669,24 @@ client.on("guildMemberAdd", member => {
       });
 
 
+client.on('message' , message => {
+    var prefix = "-";
+    let user = message.mentions.users.first()|| client.users.get(message.content.split(' ')[1])
+    if(message.content.startsWith(prefix + 'unbanid')) {
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('❌|**\`ADMINISTRATOR\`لا توجد لديك رتبة`**');
+        if(!user) return  message.channel.send(`Do this ${prefix} <@ID user> \n or \n ${prefix}unban ID user`);
+        message.guild.unban(user);
+        message.guild.owner.send(`لقد تم فك الباند عن الشخص \n ${user} \n By : <@${message.author.id}>`)
+        var embed = new Discord.RichEmbed()
+        .setThumbnail(message.author.avatarURl)
+        .setColor("RANDOM")
+        .setTitle('**●Unban** !')
+        .addField('**●User Unban :** ', `${user}` , true)
+        .addField('**●By :**' ,       ` <@${message.author.id}> ` , true)
+        .setAuthor(message.guild.name)
+        message.channel.sendEmbed(embed)
+    }
+});
 
 
 
