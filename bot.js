@@ -642,17 +642,21 @@ bot.on("guildMemberAdd", member => {
                               if (err) return console.log(err);
       
                               //AVATARً
-                              let Avatar = Canvas.Image;
+                        let Avatar = Canvas.Image;
                               let ava = new Avatar;
                               ava.src = buf;
-                              ctx.drawImage(ava, 152, 27, 95, 95);
+                              ctx.beginPath();
+                              ctx.arc(221, 161, 90, 0, Math.PI*2);
+                              ctx.closePath();
+                              ctx.clip();
+                              ctx.drawImage(ava, 5, 5, 200, 200);
                               
                                                       //wl
                               ctx.font = '20px Arial Bold';
                               ctx.fontSize = '50px';
                               ctx.fillStyle = "#FFFFFF";
                               ctx.textAlign = "center";
-                              ctx.fillText(member.user.username, 221 , 161);
+                              ctx.fillText(member.user.username, 486 , 176);
                               
     kahrba.sendFile(canvas.to1Buffer())
       
