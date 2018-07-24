@@ -597,10 +597,10 @@ let PREFIX = '-'
 });
 
 client.on("guildMemberAdd", member => {
-      const kahrba = client.channels.get("465850889455009803");
-      //*let kahrba = member.guild.channels.find("name","welcome");
-      if(!kahrba) return;
-      if(kahrba) {
+      const channel = client.channels.get("465850889455009803");
+      //*let channel = member.guild.channels.find("name","welcome");
+      if(!channel) return;
+      if(channel) {
          moment.locale('ar-ly');
          var h = member.user;
         let heroo = new Discord.RichEmbed()
@@ -610,7 +610,7 @@ client.on("guildMemberAdd", member => {
         .addField(': تاريخ دخولك الدسكورد',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)            
          .addField(': تاريخ دخولك السيرفر',`${moment(member.joinedAt).format('D/M/YYYY h:mm a ')} \n\`\`${moment(member.joinedAt).startOf(' ').fromNow()}\`\``, true)      
          .setFooter(`${h.tag}`,"https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif")
-     kahrba.send({embed:heroo});          
+     channel.send({embed:heroo});          
          
       var Canvas = require('canvas')
       var jimp = require('jimp')
@@ -657,8 +657,8 @@ client.on("guildMemberAdd", member => {
                               ctx.fillStyle = "#FFFFFF";
                               ctx.textAlign = "center";
                               ctx.fillText(member.user.username, 486 , 176);
-                              
-    kahrba.sendFile(canvas.to1Buffer())
+                                 channel.sendMessage(`<@${member.user.id}>`)
+        channel.sendFile(canvas.toBuffer())
       
       
       
