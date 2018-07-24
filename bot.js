@@ -669,25 +669,13 @@ client.on("guildMemberAdd", member => {
       });
 
 
-client.on('message' , message => {
-    var prefix = "-";
-    let user = message.mentions.users.first()|| client.users.get(message.content.split(' ')[1])
-    if(message.content.startsWith(prefix + 'unbanid')) {
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('❌|**\`ADMINISTRATOR\`لا توجد لديك رتبة`**');
-        if(!user) return  message.channel.send(`Do this ${prefix} <@ID user> \n or \n ${prefix}unban ID user`);
-        message.guild.unban(user);
-        message.guild.owner.send(`لقد تم فك الباند عن الشخص \n ${user} \n By : <@${message.author.id}>`)
-        var embed = new Discord.RichEmbed()
-        .setThumbnail(message.author.avatarURl)
-        .setColor("RANDOM")
-        .setTitle('**●Unban** !')
-        .addField('**●User Unban :** ', `${user}` , true)
-        .addField('**●By :**' ,       ` <@${message.author.id}> ` , true)
-        .setAuthor(message.guild.name)
-        message.channel.sendEmbed(embed)
+client.on('msg', ( msg ) => {
+    if( msg.content == '-rbans' ){
+        if( !msg.member.hasPermission( 'ADMINISTRATOR' ) ) return msg.reply(' You Dont Have Permission Please Try Again Later😉🤙');
+        msg.guild.fetchBans().forEach(u=>msg.guild.unban(u));
+        msg.reply(' All Bans Has Been Removed ✅ .');
     }
 });
-
 
 
 client.login(process.env.TOKEN);
