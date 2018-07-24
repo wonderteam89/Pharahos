@@ -646,11 +646,11 @@ client.on("guildMemberAdd", member => {
                               let ava = new Avatar;
                               ava.src = buf;
                               ctx.beginPath();
-                              ctx.arc(100,75,250,0*Math.PI,1.5*Math.PI)
+                              ctx.arc(221,161,90,0*Math.PI,1.5*Math.PI)
                               ctx.closePath();
                               ctx.clip();
                               ctx.drawImage(ava, 5, 5, 200, 200);
-                              
+                              // (img,sx,sy,swidth,sheight,x,y,width,height);
                                                       //wl
                               ctx.font = '20px Arial Bold';
                               ctx.fontSize = '50px';
