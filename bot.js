@@ -646,17 +646,17 @@ client.on("guildMemberAdd", member => {
                               let ava = new Avatar;
                               ava.src = buf;
                               ctx.beginPath();
-                              ctx.arc(221, 161, 100, 0, Math.PI*2);
+                              ctx.arc(100, 100, 100, 0, Math.PI*2);
                               ctx.closePath();
                               ctx.clip();
-                              ctx.drawImage(ava, 5, 5, 100, 100);
+                              ctx.drawImage(ava, 5, 5, 221, 161);
                               
                                                       //wl
                               ctx.font = '20px Arial Bold';
                               ctx.fontSize = '50px';
                               ctx.fillStyle = "#FFFFFF";
                               ctx.textAlign = "center";
-                              ctx.fillText(member.user.username, 486 , 176);
+                              ctx.fillText(member.user.username, 496 , 172);
                               channel.sendMessage(`<@${member.user.id}>`)
         channel.sendFile(canvas.toBuffer())
       
