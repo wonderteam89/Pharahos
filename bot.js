@@ -596,4 +596,72 @@ let PREFIX = '-'
     }
 });
 
+bot.on("guildMemberAdd", member => {
+      const kahrba = bot.channels.get("465850889455009803");
+      //*let kahrba = member.guild.channels.find("name","welcome");
+      if(!kahrba) return;
+      if(kahrba) {
+         moment.locale('ar-ly');
+         var h = member.user;
+        let heroo = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(h.avatarURL)
+        .setAuthor(h.username,h.avatarURL)
+        .addField(': تاريخ دخولك الدسكورد',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)            
+         .addField(': تاريخ دخولك السيرفر',`${moment(member.joinedAt).format('D/M/YYYY h:mm a ')} \n\`\`${moment(member.joinedAt).startOf(' ').fromNow()}\`\``, true)      
+         .setFooter(`${h.tag}`,"https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif")
+     kahrba.send({embed:heroo});          
+         
+      var Canvas = require('canvas')
+      var jimp = require('jimp')
+      
+      const w = ['./welcome.png'];
+      
+              let Image = Canvas.Image,
+                  canvas = new Canvas(746 , 320),
+                  ctx = canvas.getContext('2d');
+              ctx.patternQuality = 'bilinear';
+              ctx.filter = 'bilinear';
+              ctx.antialias = 'subpixel';
+              ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+              ctx.shadowOffsetY = 2;
+              ctx.shadowBlur = 2;
+              fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+                  if (err) return console.log(err)
+                  let BG = Canvas.Image;
+                  let ground = new Image;
+                  ground.src = Background;
+                  ctx.drawImage(ground, 0, 0, 746 , 320);
+      
+      })
+      
+                      let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".gif" : member.user.displayAvatarURL;
+                      jimp.read(url, (err, ava) => {
+                          if (err) return console.log(err);
+                          ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                              if (err) return console.log(err);
+      
+                              //AVATARً
+                              let Avatar = Canvas.Image;
+                              let ava = new Avatar;
+                              ava.src = buf;
+                              ctx.drawImage(ava, 152, 27, 95, 95);
+                              
+                                                      //wl
+                              ctx.font = '20px Arial Bold';
+                              ctx.fontSize = '50px';
+                              ctx.fillStyle = "#FFFFFF";
+                              ctx.textAlign = "center";
+                              ctx.fillText(member.user.username, 221 , 161);
+                              
+    kahrba.sendFile(canvas.to1Buffer())
+      
+      
+      
+      })
+      })
+      
+      }
+      });
+
 client.login(process.env.TOKEN);
