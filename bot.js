@@ -596,7 +596,7 @@ let PREFIX = '-'
     }
 });
 
-bot.on("guildMemberAdd", member => {
+client.on("guildMemberAdd", member => {
       const kahrba = bot.channels.get("465850889455009803");
       //*let kahrba = member.guild.channels.find("name","welcome");
       if(!kahrba) return;
