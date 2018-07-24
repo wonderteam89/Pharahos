@@ -649,7 +649,7 @@ client.on("guildMemberAdd", member => {
                               ctx.arc(115, 100, 90, 0, Math.PI*2);
                                  ctx.closePath();
                                  ctx.clip();
-                                 ctx.drawImage(ava, 221, 161, 200, 200);
+                                 ctx.drawImage(ava, 5, 5, 221, 161);
                               // (img,sx,sy,swidth,sheight,x,y,width,height);
                                                       //wl
                               ctx.font = '20px Arial Bold';
