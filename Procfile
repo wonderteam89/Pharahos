@@ -1,1 +1,1 @@
-worker: nvm use 10
+worker: node bot.js
