@@ -612,7 +612,7 @@ var jimp = require('jimp');// npm i jimp
                         ctx.fontSize = '20px';
                         ctx.fillStyle = "#ffffff";
                         ctx.textAlign = "center";
-                        ctx.fillText(member.user.username, 170, 140); //shows username!
+                        ctx.fillText(member.user.username, 255, 110); //shows username!
 
 
 				  
