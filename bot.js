@@ -626,6 +626,14 @@ var jimp = require('jimp');// npm i jimp
       })
       });
 
+
+client.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find('name', 'chat');
+  if (!channel) return;
+  channel.send(`${member}`);
+});
+
+
 var dat = JSON.parse("{}");
 function forEachObject(obj, func) {
     Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
