@@ -1,8 +1,6 @@
 {
   "name": "bytetech",
   "version": "2.1.0",
-  "engines": {
-    "node": "10.x",
   "description": "-- AWESOMENESS --",
   "main": "bot.js",
   "scripts": {
@@ -40,5 +38,17 @@
     "pretty-ms": "3.1.0", 
     "canvas": "^1.6.11",
     "ffmpeg-binaries": "^3.2.2-3",
-  }
+    },
+  "engines": {
+    "node": "10.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/hello-express"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
 }
