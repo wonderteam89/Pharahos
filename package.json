@@ -42,7 +42,9 @@
 
   },
   "engines": {
-    "node": "10.x"
+    "node": "10.x",
+    "npm": "10.x"
+
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"
