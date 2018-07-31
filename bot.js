@@ -685,6 +685,7 @@ client.on("guildMemberAdd", (member) => {
             var Inv = Invite.code;
             if (dat[Inv])
                 if (dat[Inv] < Invite.uses) {
+ channel.send(`${member}`);
  channel.send(`** تم الدعوة من قبل : ${Invite.inviter} **`) ;  
 
  }
