@@ -294,8 +294,129 @@ client.on('guildMemberAdd', member => {
   
 });
 
+client.on('guildMemberAdd', member => {
+var Canvas = require('canvas') //npm i canvas
+var jimp = require('jimp') //npm i jimp
+
+const w = ['wlc2.png'];  
+
+        let Image = Canvas.Image,
+            canvas = new Canvas(497 , 176),
+            
+            ctx = canvas.getContext('2d');
+        ctx.patternQuality = 'bilinear';
+        ctx.filter = 'bilinear';
+        ctx.antialias = 'subpixel';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
+            ctx.drawImage(ground, 0, 0, 497 , 176);
+
+})
+
+                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
+                jimp.read(url, (err, ava) => {
+                    if (err) return console.log(err);
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                        if (err) return console.log(err);
+
+                        
+
+                        //ur name
+                        ctx.font = '20px Arial';
+                        ctx.fontSize = '20px';
+                        ctx.fillStyle = "#ffffff";
+                        ctx.textAlign = "center";
+                        ctx.fillText(member.user.username, 170, 140); //shows username!
+
+                        
+                        
+                        //Avatar
+                                               //Avatar
+                        let Avatar = Canvas.Image;
+                              let ava = new Avatar;
+                              ava.src = buf;
+                              ctx.beginPath();
+ctx.arc(398, 85, 78, 0, Math.PI*4);
+                              ctx.closePath();
+                                 ctx.clip();
+                                 ctx.drawImage(ava, 308, 8, 173, 173);
+                                                //wl
+                     
+member.guild.channels.get('465850889455009803').sendFile(canvas.toBuffer());
 
 
+var dat = JSON.parse("{}");
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
+}
+client.on("ready", () => {
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("419541876769554433");
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            dat[Inv] = Invite.uses;
+        });
+    });
+});
+
+
+
+client.on("guildMemberAdd", (member) => {
+    let channel = member.guild.channels.get("465850889455009803");
+    if (!channel) {
+        console.log("!the channel id it's not correct");
+        return;
+    }
+    if (member.id == client.user.id) {
+        return;
+    }
+    console.log('-');
+    			 	         var currentTime = new Date(),
+		  hours = currentTime.getHours() + 4 ,
+          hours2 = currentTime.getHours() + 1 ,             
+		   minutes = currentTime.getMinutes(),             
+		   seconds = currentTime.getSeconds(),
+            Year = currentTime.getFullYear(),
+            Month = currentTime.getMonth() + 1,
+            Day = currentTime.getDate();
+             if(hours2 > 12) {
+               hours2 -= 12;
+            } else if(hours2 == 0) {
+                hours2 = "12";
+            
+            }  
+            var suffix = 'AM';
+            if (hours >= 12) {
+                suffix = 'PM';
+                hours = hours - 12;	
+            }
+            if (hours == 0) {
+                hours = 12;
+            }
+         var ee = member.user;
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("419541876769554433");
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            if (dat[Inv])
+                if (dat[Inv] < Invite.uses) {
+ channel.send(`** تم الدعوة من قبل : ${Invite.inviter} **`) ;    
+ }
+            dat[Inv] = Invite.uses;
+       
+       });
+    });
+});
 
 
 client.on('message', async message => {
@@ -366,13 +487,12 @@ client.on('message', async message => {
 });
 
 
-var cmdkick = ['اطرد','برا','كيك','kick','طرد','انقلع']
 
 client.on('message',function(message) {
     let toKick = message.mentions.users.first();
     let toReason = message.content.split(" ").slice(2).join(" ");
     let toEmbed = new Discord.RichEmbed()
-   if(message.content.startsWith(cmdkick)) {
+   if(message.content.startsWith('اطرد')) {
        if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply('**# - You dont have enough permissions!**');
        if(toKick.bannable) return message.reply("**# - I cannot kick someone with a higher role than me!**");
        if(!toReason) return message.reply("**# - Supply a reason!**")
