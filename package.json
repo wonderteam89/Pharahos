@@ -3,11 +3,11 @@
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
   "name": "Pharahos",
-  "version": "0.0.1",
+  "version": "0.1.5",
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "bot.js",
   "scripts": {
-    "start": "nvm use 10"
+    "start": "node bot.js"
   },
   "dependencies": {
    "discord.js": "^11.3.2",
