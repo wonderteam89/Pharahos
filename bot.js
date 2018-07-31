@@ -22,7 +22,7 @@ const queue = new Map();
 const client = new Discord.Client();
 const adminprefix = "k!";
 const devs = ['286088294234718209'];
-const prefix = '-'
+const prefix = 'p'
 
 client.on('ready', () => {
 	// - 
@@ -52,7 +52,7 @@ message.channel.stopTyping()
 });
 
 client.on('message', msg => {
-    if (msg.content == '!ادخل الروم يابن الوسخه') {
+    if (msg.content == '#join-room') {
         if (msg.member.voiceChannel) {
 
      if (msg.member.voiceChannel.joinable) {
@@ -105,23 +105,8 @@ client.on('voiceStateUpdate', (old, now) => {
 
 
 
-
-client.on("message", message => {
-    var prefix = "-"
-    if (!message.content.startsWith(prefix)) return;
-      let command = message.content.split(" ")[0];
-      command = command.slice(prefix.length);
-        if(command === "mcskin") {
-                const args = message.content.split(" ").slice(1).join(" ")
-        if (!args) return message.channel.send("** Type your skin name **");
-        const image = new Discord.Attachment(`https://minotar.net/armor/body/${args}`, "skin.png");
-    message.channel.send(image)
-        }
-    });
-
   
 client.on('message' , message => {
-      var prefix = "-";
       if(message.author.bot) return;
      
       if(message.content.startsWith(prefix + "rolebc")) {
@@ -154,88 +139,10 @@ client.on('message' , message => {
         }
     });
 
-client.on('message', message => {
-if(message.content === prefix + 'info' || message.content === prefix + 'شرح') {
-    let pages = ['https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468','https://media.discordapp.net/attachments/446719436385419265/465905470842994691/info.png','https://media.discordapp.net/attachments/446719436385419265/465905475985342475/News.png','https://media.discordapp.net/attachments/446719436385419265/465905472440893441/Ruels.png','https://media.discordapp.net/attachments/446719436385419265/465905474747891743/Chat.png','https://media.discordapp.net/attachments/446719436385419265/465907892739112960/Photo.png','https://media.discordapp.net/attachments/446719436385419265/465905487758491659/bot.png','https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468']
-	let page = 1;
-	
-	message.delete();
-	
-	let embed = new Discord.RichEmbed()
-	.setColor('#264d00')
-	.setFooter(`شرح | صفحة رقم ${page} من اصل ${pages.length} صفحة`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468')
-	.setImage(pages[page-1])
-	
-// ${page}
-// ${pages.length}
-	message.channel.sendEmbed(embed).then(msg => {
-		
-		msg.react('⏮').then( r => {
-			msg.react('⬅')
-		.then(() => msg.react('⏹'))
-		.then(() => msg.react('➡'))
-		.then(() => msg.react('⏭'))
-			
-			let backwardsFilter = (reaction, user) => reaction.emoji.name === '⬅' && user.id === message.author.id;
-			let forwardsFilter = (reaction, user) => reaction.emoji.name === '➡' && user.id === message.author.id;
-			
-			let sbackwardsFilter = (reaction, user) => reaction.emoji.name === '⏮' && user.id === message.author.id;
-			let sforwardsFilter = (reaction, user) => reaction.emoji.name === '⏭' && user.id === message.author.id;
-			
-			let cancelFilter = (reaction, user) => reaction.emoji.name === '⏹' && user.id === message.author.id;
-			
-			let backwards = msg.createReactionCollector(backwardsFilter, { time: 0 });
-			let forwards = msg.createReactionCollector(forwardsFilter, { time: 0 });
-			
-			let sbackwards = msg.createReactionCollector(sbackwardsFilter, { time: 0 });
-			let sforwards = msg.createReactionCollector(sforwardsFilter, { time: 0 });
-			
-			let cancel = msg.createReactionCollector(cancelFilter, { time: 0 });
-			
-			backwards.on('collect', r => {
-				if (page === 1) return;
-				page--;
-				embed.setImage(pages[page-1]);
-				embed.setFooter(`شرح | صفحة رقم ${page} من اصل ${pages.length} صفحة`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468');
-				msg.edit(embed)
-			})
-			forwards.on('collect', r => {
-				if (page === pages.length) return;
-				page++;
-				embed.setImage(pages[page-1]);
-				embed.setFooter(`شرح | صفحة رقم ${page} من اصل ${pages.length} صفحة`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468');
-				msg.edit(embed)
-			})
-			sbackwards.on('collect', r => {
-				if (page === 1) return;
-				page = 1;
-				embed.setImage(pages[page-1]);
-				embed.setFooter(`شرح | صفحة رقم ${page} من اصل ${pages.length} صفحة`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468');
-				msg.edit(embed)
-			})
-			sforwards.on('collect', r => {
-				if (page === pages.length) return;
-				page = 8; 
-				embed.setImage(pages[page-1]);
-				embed.setFooter(`شرح | صفحة رقم ${page} من اصل ${pages.length} صفحة`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468');
-				msg.edit(embed)
-			})
-			cancel.on('collect', r => {
-				embed.setDescription(`**سوف يتم إغلاق القائمة**`);
-				embed.setImage('');
-				embed.setFooter(`Menu will close after 3sec`, 'https://media.discordapp.net/attachments/446719436385419265/465905488232448001/PharahosTM.png?width=468&height=468');
-				msg.edit(embed).then(msg.delete(3000));
-			})
-		})
-	})
-}
-});
-
-
 
 
 client.on('message', message => {
-                    var prefix = "-";
+                    var prefix = "p";
 
            if (message.content.startsWith(prefix + "id")) {
                      if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات ❌`);
@@ -280,32 +187,45 @@ var mentionned = message.mentions.members.first();
 
   
 client.on('message', message => {
-    var prefix = "-";
-    
-        if (message.author.id === client.user.id) return;
-        if (message.guild) {
-       let embed = new Discord.RichEmbed()
-        let args = message.content.split(' ').slice(1).join(' ');
-    if(message.content.split(' ')[0] == prefix + 'bc') {
-        if (!args[1]) {
-    message.channel.send("**-bc <message>**");
-    return;
-    }
-            message.guild.members.forEach(m => {
-       if(!message.member.hasPermission('ADMINISTRATOR')) return;
-                var bc = new Discord.RichEmbed()
-                .addField('» السيرفر :', `${message.guild.name}`)
-                .addField('» المرسل : ', `${message.author.username}#${message.author.discriminator}`)
-                .addField(' » الرسالة : ', args)
-                .setColor('RANDOM')
-                // m.send(`[${m}]`);
-                m.send(`${m}`,{embed: bc});
-            });
-        }
-        } else {
-            return;
-        }
-    });
+  if(!message.channel.guild) return;
+if(message.content.startsWith('pbc')) {
+if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
+let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+let copy = "Dragon";
+let request = `Requested By ${message.author.username}`;
+if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
+msg.react('✅')
+.then(() => msg.react('❌'))
+.then(() =>msg.react('✅'))
+
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+reaction1.on("collect", r => {
+message.channel.send(`☑ | Done ... The Broadcast Message Has Been Sent For ${message.guild.members.size} Members`).then(m => m.delete(5000));
+message.guild.members.forEach(m => {
+var bc = new
+Discord.RichEmbed()
+.setColor('RANDOM')
+.setTitle('Broadcast')
+.addField('Server', message.guild.name)
+.addField('Sender', message.author.username)
+.addField('Message', args)
+.setThumbnail(message.author.avatarURL)
+.setFooter(copy, client.user.avatarURL);
+m.send({ embed: bc })
+msg.delete();
+})
+})
+reaction2.on("collect", r => {
+message.channel.send(`**Broadcast Canceled.**`).then(m => m.delete(5000));
+msg.delete();
+})
+})
+}
+});
 
 
 client.on('message', message => {
@@ -374,6 +294,10 @@ client.on('guildMemberAdd', member => {
   
 });
 
+
+
+
+
 client.on('message', async message => {
     let args = message.content.split(" ");
     let command = args[0];
@@ -441,11 +365,14 @@ client.on('message', async message => {
    }
 });
 
+
+var cmdkick = ['اطرد','برا','كيك','kick','طرد','انقلع']
+
 client.on('message',function(message) {
     let toKick = message.mentions.users.first();
     let toReason = message.content.split(" ").slice(2).join(" ");
     let toEmbed = new Discord.RichEmbed()
-   if(message.content.startsWith('برا')) {
+   if(message.content.startsWith(cmdkick)) {
        if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply('**# - You dont have enough permissions!**');
        if(toKick.bannable) return message.reply("**# - I cannot kick someone with a higher role than me!**");
        if(!toReason) return message.reply("**# - Supply a reason!**")
