@@ -559,6 +559,65 @@ client.on('message' , async (message) => {
 });
 
 
+// .................................................................................
+
+
+client.on('guildMemberAdd', member => {
+
+const w = ['wlc2.png'];  
+      var Jimp = require("jimp");
+       var Canvas = require('canvas')
+        let Image = Canvas.Image,
+            canvas = new Canvas(497 , 176),
+            
+            ctx = canvas.getContext('2d');
+        ctx.patternQuality = 'bilinear';
+        ctx.filter = 'bilinear';
+        ctx.antialias = 'subpixel';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
+            ctx.drawImage(ground, 0, 0, 497 , 176);
+
+})
+
+                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
+                jimp.read(url, (err, ava) => {
+                    if (err) return console.log(err);
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                        if (err) return console.log(err);
+
+                        
+
+                        //ur name
+                        ctx.font = '20px Arial';
+                        ctx.fontSize = '20px';
+                        ctx.fillStyle = "#ffffff";
+                        ctx.textAlign = "center";
+                        ctx.fillText(member.user.username, 170, 140); //shows username!
+
+                        
+                        
+                        //Avatar
+                                               //Avatar
+                        let Avatar = Canvas.Image;
+                              let ava = new Avatar;
+                              ava.src = buf;
+                              ctx.beginPath();
+ctx.arc(398, 85, 78, 0, Math.PI*4);
+                              ctx.closePath();
+                                 ctx.clip();
+                                 ctx.drawImage(ava, 308, 8, 173, 173);
+                                                //wl
+                     
+member.guild.channels.get('465850889455009803').sendFile(canvas.toBuffer());
+
+
 			    
 //======================================[Owners]======================================
 
