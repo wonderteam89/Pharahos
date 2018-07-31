@@ -574,48 +574,49 @@ var jimp = require('jimp');// npm i jimp
 
               let Image = Canvas.Image,
                  canvas = new Canvas(497 , 176),
-                  ctx = canvas.getContext('2d');
-              ctx.patternQuality = 'bilinear';
-              ctx.filter = 'bilinear';
-              ctx.antialias = 'subpixel';
-              ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-              ctx.shadowOffsetY = 2;
-              ctx.shadowBlur = 2;
-              fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-                  if (err) return console.log(err)
-                  let BG = Canvas.Image;
-                  let ground = new Image;
-                  ground.src = Background;
+            ctx = canvas.getContext('2d');
+        ctx.patternQuality = 'bilinear';
+        ctx.filter = 'bilinear';
+        ctx.antialias = 'subpixel';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
             ctx.drawImage(ground, 0, 0, 497 , 176);
 
       })
 
-                      let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".gif" : member.user.displayAvatarURL;
-                      jimp.read(url, (err, ava) => {
-                          if (err) return console.log(err);
-                          ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-                              if (err) return console.log(err);
+                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
+                jimp.read(url, (err, ava) => {
+                    if (err) return console.log(err);
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                        if (err) return console.log(err);
 
-                              
+                        
+
+                        //ur name
+                        ctx.font = '20px Arial';
+                        ctx.fontSize = '20px';
+                        ctx.fillStyle = "#ffffff";
+                        ctx.textAlign = "center";
+                        ctx.fillText(member.user.username, 255, 110); //shows username!
+
+                        
+                        
+                        //Avatar
                                                //Avatar
                         let Avatar = Canvas.Image;
                               let ava = new Avatar;
                               ava.src = buf;
                               ctx.beginPath();
-                              ctx.arc(398, 85, 78, 0, Math.PI*4);
-                              ctx.closePath();
-                              ctx.clip();
-                              ctx.drawImage(ava, 308, 8, 173, 173);
-
-                                                      //wl
-                        ctx.font = '20px Arial';
-                        ctx.fontSize = '20px';
-                        ctx.fillStyle = "#ffffff";
-                        ctx.textAlign = "center";
-                        ctx.fillText('Test?', 255, 110); //shows username!
-
-
-				  
+ctx.arc(98, 85, 70, 0, Math.PI*2);
+ctx.closePath();
+                                 ctx.clip();
+                                 ctx.drawImage(ava, 8, 8, 173, 173);
 				  
 				  
  welcomer.sendFile(canvas.toBuffer())
