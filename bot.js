@@ -575,42 +575,6 @@ let PREFIX = '-'
     }
 });
 
-      const arraySort = require('array-sort'),
-          table = require('table');
-
-client.on('message' , async (message) => {
-
-    if(message.content.startsWith(prefix + "invites")) {
-                 if(message.author.bot) return;
-        if(!message.channel.guild) return message.reply(' Error : \` Guild Command \`');
-
-  var invites = await message.guild.fetchInvites();
-
-    invites = invites.array();
-
-    arraySort(invites, 'uses', { reverse: true });
-
-    let possibleInvites = ['User Invited |  Uses '];
-    invites.forEach(i => {
-        if (i.uses === 0) { 
-            return;
-            
-        }
-      possibleInvites.push(['\n\ ' +'<@'+ i.inviter.id +'>' + '  :  ' +   i.uses]);
-       
-      if (i.uses === 20) {
-          message.member.addRole(message.member.guild.roles.find("name","Premuim ,"));
-      }
-     
-    })
-    
-    const embed = new Discord.RichEmbed()
-    .setColor('BLACK')
-    .addField("Top Invites." ,`${(possibleInvites)}`)
-
-    message.channel.send(embed)
-    }
-});
 
 			    
 //======================================[Owners]======================================
