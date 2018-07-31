@@ -603,20 +603,19 @@ var jimp = require('jimp');// npm i jimp
                         ctx.fontSize = '20px';
                         ctx.fillStyle = "#ffffff";
                         ctx.textAlign = "center";
-                        ctx.fillText(member.user.username, 255, 110); //shows username!
+                        ctx.fillText(member.user.username, 170, 140); //shows username!
 
                         
                         
-                        //Avatar
                                                //Avatar
                         let Avatar = Canvas.Image;
                               let ava = new Avatar;
                               ava.src = buf;
                               ctx.beginPath();
-ctx.arc(98, 85, 70, 0, Math.PI*2);
-ctx.closePath();
-                                 ctx.clip();
-                                 ctx.drawImage(ava, 8, 8, 173, 173);
+                              ctx.arc(398, 85, 78, 0, Math.PI*4);
+                              ctx.closePath();
+                              ctx.clip();
+                              ctx.drawImage(ava, 308, 8, 173, 173);
 				  
 				  
  welcomer.sendFile(canvas.toBuffer())
