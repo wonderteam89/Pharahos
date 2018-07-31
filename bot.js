@@ -563,7 +563,6 @@ client.on('message' , async (message) => {
 
 var Canvas = require('canvas');// npm i canvas
 var jimp = require('jimp');// npm i jimp 
-const fs = require("fs");// npm i fs
 
       client.on('guildMemberAdd', member => {
       const welcomer =  member.guild.channels.find('name', 'chat');//اسم الروم الي يرحب فيه
