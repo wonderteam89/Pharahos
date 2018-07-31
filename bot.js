@@ -608,11 +608,11 @@ var jimp = require('jimp');// npm i jimp
                               ctx.drawImage(ava, 308, 8, 173, 173);
 
                                                       //wl
-                              ctx.font = '20px Arial Bold';
-                              ctx.fontSize = '20px';
-                              ctx.fillStyle = "#FFFFFF";
-                              ctx.textAlign = "center";
-                              ctx.fillText(member.user.username, 170, 140); //shows username!
+                        ctx.font = '20px Arial';
+                        ctx.fontSize = '20px';
+                        ctx.fillStyle = "#ffffff";
+                        ctx.textAlign = "center";
+                        ctx.fillText(member.user.username, 170, 140); //shows username!
 
  welcomer.sendFile(canvas.toBuffer())
 
